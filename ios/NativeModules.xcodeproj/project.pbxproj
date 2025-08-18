@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-NativeModules.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-NativeModules.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		234D4A062E5329F4008B1DC3 /* NativeCPracticeProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = 234D4A052E5329F4008B1DC3 /* NativeCPracticeProvider.mm */; };
 		235C03D82E507A3B00FF6F01 /* RCTNativeLocalStorage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 235C03D72E507A3B00FF6F01 /* RCTNativeLocalStorage.mm */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		7A870EB27F2CA8FE145E24C3 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -20,6 +21,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = NativeModules/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NativeModules/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = NativeModules/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		234D4A052E5329F4008B1DC3 /* NativeCPracticeProvider.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeCPracticeProvider.mm; sourceTree = "<group>"; };
+		234D4A072E532A0C008B1DC3 /* NativeCPracticeProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeCPracticeProvider.h; sourceTree = "<group>"; };
 		235C03D62E507A3B00FF6F01 /* RCTNativeLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeLocalStorage.h; sourceTree = "<group>"; };
 		235C03D72E507A3B00FF6F01 /* RCTNativeLocalStorage.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeLocalStorage.mm; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-NativeModules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModules.debug.xcconfig"; path = "Target Support Files/Pods-NativeModules/Pods-NativeModules.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +57,15 @@
 			name = NativeModules;
 			sourceTree = "<group>";
 		};
+		234D4A032E531246008B1DC3 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				234D4A052E5329F4008B1DC3 /* NativeCPracticeProvider.mm */,
+				234D4A072E532A0C008B1DC3 /* NativeCPracticeProvider.h */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
 		235C03D52E507A1100FF6F01 /* NativeLocalStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +94,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				234D4A032E531246008B1DC3 /* shared */,
 				235C03D52E507A1100FF6F01 /* NativeLocalStorage */,
 				13B07FAE1A68108700A75B9A /* NativeModules */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -260,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				235C03D82E507A3B00FF6F01 /* RCTNativeLocalStorage.mm in Sources */,
+				234D4A062E5329F4008B1DC3 /* NativeCPracticeProvider.mm in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,7 +404,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -459,7 +476,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
