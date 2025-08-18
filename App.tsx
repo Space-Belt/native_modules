@@ -12,11 +12,19 @@ import type { Spec as BatterySpec } from './js/modules/RCTBatteryModuleType';
 import React, { useEffect } from 'react';
 
 import NativeLocalStorage from './specs/NativeLocalStorage';
+import NativeCPractice from './specs/NativeCPractice';
 
 function App() {
-  const [value, setValue] = React.useState<string | null>(null);
+  const [value, setValue] = React.useState<string>('');
 
   const [editingValue, setEditingValue] = React.useState<string | null>(null);
+
+  const [reversedValue, setReversedValue] = React.useState('');
+
+  const onPress = () => {
+    const revString = NativeCPractice.reverseString(value);
+    setReversedValue(revString);
+  };
 
   useEffect(() => {
     const BatteryModule =
@@ -64,6 +72,20 @@ function App() {
       <Button title="Save" onPress={saveValue} />
       <Button title="Delete" onPress={deleteValue} />
       <Button title="Clear" onPress={clearAll} />
+      <View>
+        <Text style={styles.title}>
+          Welcome to C++ Turbo Native Module Example
+        </Text>
+        <Text>Write down here he text you want to revert</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Write your text here"
+          onChangeText={setValue}
+          value={value}
+        />
+        <Button title="Reverse" onPress={onPress} />
+        <Text>Reversed text: {reversedValue}</Text>
+      </View>
     </View>
   );
 }
@@ -75,6 +97,10 @@ const styles = StyleSheet.create({
   text: {
     margin: 10,
     fontSize: 20,
+  },
+  title: {
+    fontSize: 18,
+    marginBottom: 20,
   },
   textInput: {
     margin: 10,
